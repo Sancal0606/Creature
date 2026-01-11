@@ -1,11 +1,8 @@
 #pragma once
 #include <windows.h>
 #include <vector>
+#include "utils/pixel.h"
 
-struct Pixel{
-    int x, y;
-    COLORREF color;
-};
 
 class Creature{
     private:

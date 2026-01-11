@@ -1,7 +1,9 @@
 #include <windows.h>
-#include "Creature.h"
+#include "creature.h"
+#include "./utils/circle.h"
 
 Creature creature;
+Circle circle(50, 400, 300);
 
 //Window procedure (handles messages)
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam){
@@ -15,6 +17,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam){
             HDC hdc = BeginPaint(hwnd, &ps);
             creature.update();
             creature.draw(hdc);
+            circle.draw(hdc);
             EndPaint(hwnd, &ps);
             return 0;
         }
