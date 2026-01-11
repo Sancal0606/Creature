@@ -13,9 +13,9 @@ Creature::~Creature(){
     //Nothing
 }
 
-void Creature::draw(HDC hdc){
+void Creature::draw(FrameBuffer& fb){
     for(auto &p: segments){
-        SetPixel(hdc, p.x, p.y, p.color);
+        fb.setPixel(p.x, p.y, p.color);
     }
 }
 

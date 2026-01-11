@@ -2,6 +2,7 @@
 #include <windows.h>
 #include <vector>
 #include "pixel.h"
+#include "framebuffer.h"
 
 class Circle{
     private:
@@ -14,5 +15,5 @@ class Circle{
         Circle(int radius, int posX, int posY);
         ~Circle();
 
-        void draw(HDC hdc);
+        void draw(FrameBuffer& fb);
 };

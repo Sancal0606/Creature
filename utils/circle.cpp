@@ -13,7 +13,6 @@ Circle::~Circle(){
 }
 
 void Circle::calculatePixels(){
-    std::cout << "radius: " << radius << ", posX: " << posX << ", posY: " << posY << std::endl;
     int x = 0;
     int y = -radius;
     int p = -radius;
@@ -37,8 +36,8 @@ void Circle::calculatePixels(){
     }
 }
 
-void Circle::draw(HDC hdc){
+void Circle::draw(FrameBuffer& fb){
     for(auto &p: pixels){
-        SetPixel(hdc, p.x, p.y, p.color);
+        fb.setPixel(p.x, p.y, p.color);
     }
 }

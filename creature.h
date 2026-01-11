@@ -2,6 +2,7 @@
 #include <windows.h>
 #include <vector>
 #include "utils/pixel.h"
+#include "utils/framebuffer.h"
 
 
 class Creature{
@@ -11,6 +12,6 @@ class Creature{
         Creature();
         ~Creature();
 
-        void draw(HDC hdc);
+        void draw(FrameBuffer& fb);
         void update();
 };

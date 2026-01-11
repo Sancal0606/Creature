@@ -1,23 +1,39 @@
 #include <windows.h>
 #include "creature.h"
 #include "./utils/circle.h"
+#include "./utils/framebuffer.h"
 
 Creature creature;
 Circle circle(50, 400, 300);
+FrameBuffer* frameBuffer = nullptr;
 
 //Window procedure (handles messages)
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam){
     switch(uMsg){
+        case WM_CREATE:
+        {
+            frameBuffer = new FrameBuffer(800, 600);
+            return 0;
+        }
         case WM_DESTROY:
+            delete frameBuffer;
             PostQuitMessage(0);
             return 0;
         case WM_PAINT:
         {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hwnd, &ps);
-            creature.update();
-            creature.draw(hdc);
-            circle.draw(hdc);
+
+            if(frameBuffer){
+                frameBuffer -> clear(RGB(255,255,255));
+
+                creature.update();
+                creature.draw(*frameBuffer);
+                circle.draw(*frameBuffer);
+
+                frameBuffer -> present(hdc);
+            }
+           
             EndPaint(hwnd, &ps);
             return 0;
         }
