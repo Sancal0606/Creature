@@ -1,12 +1,8 @@
 #include "Creature.h"
 
-Creature::Creature(){
-    segments.push_back({100, 100, RGB(255,0,0)});
-    segments.push_back({101, 100, RGB(255,0,0)});
-    segments.push_back({102, 100, RGB(255,0,0)});
-    segments.push_back({102, 100, RGB(255,0,0)});
-    segments.push_back({101, 101, RGB(0,255,0)});
-    segments.push_back({100, 101, RGB(0,0,255)});
+Creature::Creature(int xo, int yo) : circle(21, xo, yo, true) {
+    posX = xo;
+    posY = yo;
 }
 
 Creature::~Creature(){
@@ -14,11 +10,15 @@ Creature::~Creature(){
 }
 
 void Creature::draw(FrameBuffer& fb){
-    for(auto &p: segments){
-        fb.setPixel(p.x, p.y, p.color);
-    }
+    circle.draw(fb);
 }
 
 void Creature::update(){
     
+}
+
+void Creature::setPosition(int x, int y){
+    posX = x;
+    posY = y;
+    circle.setPosition(posX, posY);
 }

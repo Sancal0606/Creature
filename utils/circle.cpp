@@ -67,3 +67,10 @@ void Circle::draw(FrameBuffer& fb){
         fb.setPixel(p.x, p.y, p.color);
     }
 }
+
+void Circle::setPosition(int x, int y){
+    posX = x;
+    posY = y;
+    pixels.clear();
+    calculatePixels();
+}

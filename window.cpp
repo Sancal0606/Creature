@@ -3,7 +3,7 @@
 #include "./utils/circle.h"
 #include "./utils/framebuffer.h"
 
-Creature creature;
+Creature creature(50,50);
 Circle circle(21, 400, 300, false);
 FrameBuffer* frameBuffer = nullptr;
 
@@ -19,6 +19,14 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam){
             delete frameBuffer;
             PostQuitMessage(0);
             return 0;
+        case WM_MOUSEMOVE:
+        {
+            int mouseX = LOWORD(lParam);
+            int mouseY = HIWORD(lParam);
+            creature.setPosition(mouseX, mouseY);
+            InvalidateRect(hwnd, nullptr, FALSE);
+            return 0;
+        }
         case WM_PAINT:
         {
             PAINTSTRUCT ps;

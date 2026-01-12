@@ -17,4 +17,5 @@ class Circle{
         ~Circle();
 
         void draw(FrameBuffer& fb);
+        void setPosition(int x, int y);
 };
