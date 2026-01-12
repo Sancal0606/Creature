@@ -4,7 +4,7 @@
 #include "./utils/framebuffer.h"
 
 Creature creature;
-Circle circle(50, 400, 300);
+Circle circle(21, 400, 300, false);
 FrameBuffer* frameBuffer = nullptr;
 
 //Window procedure (handles messages)
